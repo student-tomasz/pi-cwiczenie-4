@@ -24,9 +24,10 @@ var Uploader = function() {
       if (request.readyState === 4) {
         if (request.status === 200) {
           updater.update();
+          console.log('[notice]', 'file uploaded successfully');
         }
         else {
-          console.log("upload failed");
+          console.log('[error]', 'file upload failed');
         }
       }
     };
