@@ -1,16 +1,16 @@
 <?php
+include('sanitize.php');
 include('db_connect.php');
 
 if ($_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') {
-  // TODO: sanitize
   $file = array(
-    'name' => $_SERVER['HTTP_X_FILE_NAME'],
-    'size' => $_SERVER['HTTP_X_FILE_SIZE'],
-    'type' => $_SERVER['HTTP_X_FILE_TYPE'],
+    'name' => sanitize($_SERVER['HTTP_X_FILE_NAME']),
+    'size' => sanitize($_SERVER['HTTP_X_FILE_SIZE']),
+    'type' => sanitize($_SERVER['HTTP_X_FILE_TYPE']),
     'path' => ''
   );
 
-  $sql = "INSERT INTO $config[db_table_name] (name, size, type) VALUES ('$file[name]', '$file[size]', '$file[type]')";
+  $sql = "INSERT INTO {$config[db_table_name]} (name, size, type) VALUES ('{$file['name']}', '{$file['size']}', '{$file['type']}')";
   if (!mysql_query($sql, $connection)) {
     error_log('Didn\'t write to the database: ' . mysql_error());
     die(1);

@@ -1,7 +1,8 @@
 <?php
+include('sanitize.php');
 include('db_connect.php');
 
-$id = $_REQUEST['id'];
+$id = sanitize($_REQUEST['id']);
 
 if (!mysql_query("DELETE FROM {$config['db_table_name']} WHERE id='{$id}'", $connection)) {
   error_log('Didn\'t delete from the database: ' . mysql_error());
