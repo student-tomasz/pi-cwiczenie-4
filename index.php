@@ -1,5 +1,5 @@
 <?php
-include('db_connect.php');
+include_once('connect.php');
 
 $files = mysql_query("SELECT * FROM {$config['db_table_name']}");
 while($file = mysql_fetch_array($files)) {
@@ -19,5 +19,5 @@ while($file = mysql_fetch_array($files)) {
   echo "</tr>\n";
 }
 
-include('db_disconnect.php');
+include('disconnect.php');
 ?>

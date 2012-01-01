@@ -1,6 +1,6 @@
 <?php
-include('sanitize.php');
-include('db_connect.php');
+include_once('sanitize.php');
+include_once('connect.php');
 
 $id = sanitize($_REQUEST['id']);
 
@@ -11,6 +11,6 @@ if (!unlink($config['path'] . "{$id}")) {
   error_log('Didn\'t delete from the server.');
 }
 
-include('db_disconnect.php');
+include_once('disconnect.php');
 ?>
 

@@ -1,6 +1,6 @@
 <?php
-include('sanitize.php');
-include('db_connect.php');
+include_once('sanitize.php');
+include_once('connect.php');
 
 if ($_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') {
   $file = array(
@@ -23,5 +23,5 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') {
   }
 }
 
-include('db_disconnect.php');
+include_once('disconnect.php');
 ?>

@@ -1,5 +1,5 @@
 <?php
-include('config.php');
+include_once('config.php');
 
 $connection = mysql_connect($config['db_host'], $config['db_user'], $config['db_pass']);
 if (!$connection) {
