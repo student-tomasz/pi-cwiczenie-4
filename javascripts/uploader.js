@@ -1,17 +1,15 @@
-(function() {
-  var uploader = {
-    form:   element('upload-form'),
-    input:  element('upload-input'),
-    submit: element('upload-submit')
-  };
+var Uploader = function() {
+  var form =   element('upload-form');
+  var input =  element('upload-input');
+  var submit = element('upload-submit');
 
   var fileChanged = function(e) {
-    var file = uploader.input.files[0];
+    var file = input.files[0];
     if (file.size > element('MAX_FILE_SIZE').value) {
-      uploader.submit.disabled = true;
+      submit.disabled = true;
     }
     else {
-      uploader.submit.disabled = false;
+      submit.disabled = false;
     }
   };
 
@@ -19,13 +17,12 @@
     e.stopPropagation();
     e.preventDefault();
 
-    var file = uploader.input.files[0];
+    var file = input.files[0];
 
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function(e) {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          console.log("uploaded successfully");
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function(e) {
+      if (request.readyState === 4) {
+        if (request.status === 200) {
           updater.update();
         }
         else {
@@ -34,15 +31,17 @@
       }
     };
 
-    xhr.open('POST', uploader.form.action, true);
-    xhr.setRequestHeader("Cache-Control", "no-cache");
-    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-    xhr.setRequestHeader("X-File-Name", file.name);
-    xhr.setRequestHeader("X-File-Size", file.size);
-    xhr.setRequestHeader("X-File-Type", file.type);
-    xhr.send(file);
+    request.open('POST', form.action, true);
+    request.setRequestHeader("Cache-Control", "no-cache");
+    request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+    request.setRequestHeader("X-File-Name", file.name);
+    request.setRequestHeader("X-File-Size", file.size);
+    request.setRequestHeader("X-File-Type", file.type);
+    request.send(file);
   };
 
-  uploader.form.addEventListener('change', fileChanged, false);
-  uploader.form.addEventListener('submit', fileSubmitted, false);
-})();
+  this.init = function() {
+    input.addEventListener('change', fileChanged, false);
+    form.addEventListener('submit', fileSubmitted, false);
+  };
+};

@@ -79,12 +79,15 @@
     <script type='text/javascript' src='javascripts/uploader.js'></script>
     <script type='text/javascript' src='javascripts/updater.js'></script>
     <script type='text/javascript'>
-      var updater = null;
+      var updater  = null;
+      var uploader = null;
 
       window.onload = function() {
-        updater = new Updater();
+        updater  = new Updater();
+        uploader = new Uploader();
 
         updater.init();
+        uploader.init();
       };
     </script>
   </body>
