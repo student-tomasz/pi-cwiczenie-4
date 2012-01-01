@@ -15,3 +15,11 @@ body {
 pre.prettyprint {
   font-size: 0.75em;
 }
+
+div#validations,
+div#sources {
+  margin-top: 3em;
+  display: block;
+  float: left;
+  width: 50%;
+}
