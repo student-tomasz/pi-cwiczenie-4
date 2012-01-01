@@ -1,12 +1,6 @@
-<?
-include('config.php');
+<?php
 
-$db = mysql_connect($config['db_host'], $config['db_user'], $config['db_pass']);
-if (!$db) {
-  error_log('Didn\'t connect to the database: ' . mysql_error());
-  die(1);
-}
-mysql_select_db($config['db_name'], $db);
+include('db_connect.php');
 
 if ($_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') {
   // TODO: sanitize
@@ -30,8 +24,6 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') {
   }
 }
 
-if ($db) {
-  mysql_close($db);
-}
+include('db_disconnect.php');
 
 ?>
