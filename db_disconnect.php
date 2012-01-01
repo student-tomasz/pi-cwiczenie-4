@@ -1,7 +1,7 @@
 <?php
 
-if ($db) {
-  mysql_close($db);
+if ($connection) {
+  mysql_close($connection);
 }
 
 ?>
