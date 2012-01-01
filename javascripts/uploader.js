@@ -17,6 +17,9 @@ var Uploader = function() {
     e.stopPropagation();
     e.preventDefault();
 
+    submit.disabled = true;
+    submit.value = 'Przesyłanie...'
+
     var file = input.files[0];
 
     var request = new XMLHttpRequest();
@@ -24,6 +27,8 @@ var Uploader = function() {
       if (request.readyState === 4) {
         if (request.status === 200) {
           updater.update();
+          submit.disabled = false;
+          submit.value = 'Wyślij'
           console.log('[notice]', 'file uploaded successfully');
         }
         else {
