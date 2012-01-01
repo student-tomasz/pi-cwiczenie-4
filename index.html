@@ -78,19 +78,23 @@
     <script type='text/javascript' src='javascripts/helpers.js'></script>
     <script type='text/javascript' src='javascripts/updater.js'></script>
     <script type='text/javascript' src='javascripts/uploader.js'></script>
+    <script type='text/javascript' src='javascripts/converter.js'></script>
     <script type='text/javascript' src='javascripts/destroyer.js'></script>
     <script type='text/javascript'>
       var updater   = null;
       var uploader  = null;
       var destroyer = null;
+      var converter = null;
 
       window.onload = function() {
         updater   = new Updater();
         uploader  = new Uploader();
+        converter = new Converter();
         destroyer = new Destroyer();
 
         updater.init();
         uploader.init();
+        converter.init();
         destroyer.init();
       };
     </script>

@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.1//EN' 'http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <meta http-equiv='Content-Language' content='pl' />
+    <meta name='Description' content='Okno pomocnicze projektu do ćwiczenia nr 4
+      z przedmiotu Programowanie internetowe 2011/2012.' />
+    <meta name='Author' content='cudzilot' />
+
+    <title>
+      Programowanie internetowe 2011/2012
+      &raquo; Ćwiczenie 4
+      &raquo; Konwertuj plik
+    </title>
+
+    <link rel='home' title='Projekt do ćwiczenia nr 4 z przedmiotu Programowanie internetowe 2011/2012' href='index.html' />
+    <link rel='index' title='Spis projektów z przedmiotu Programowanie internetowe 2011/2012' href='../' />
+
+    <link href='shared/stylesheets/style.css' type='text/css' rel='stylesheet' media='all' />
+    <link href='shared/favicon.ico' type='image/ico' rel='shortcut icon' />
+
+    <link href='stylesheets/convert.css' type='text/css' rel='stylesheet' media='all' />
+  </head>
+
+  <body id='project-4-convert'>
+    <form id='conversion-form' action='convert.php' method='post'>
+      <input type='hidden' id='file-id' value='null' />
+      <p>Zmień kodowanie pliku<strong id='file-name'></strong> z </p>
+      <select id='convert-form-input' name='from'>
+        <option value='utf-8' selected='selected'>UTF-8</option>
+        <option value='iso-8859-2'>ISO-8859-2</option>
+        <option value='windows-1250'>WINDOWS-1250</option>
+      </select> 
+      <p> na </p>
+      <select id='convert-to-input' name='to'>
+        <option value='utf-8'>UTF-8</option>
+        <option value='iso-8859-2' selected='selected'>ISO-8859-2</option>
+        <option value='windows-1250'>WINDOWS-1250</option>
+      </select> 
+      <div id='convert-actions'>
+        <input id='convert-submit' type='submit' value='Konwertuj' />
+        <input id='convert-cancel' type='reset' value='Anuluj' />
+      </div>
+    </form>
+
+    <script type='text/javascript' src='javascripts/helpers.js'></script>
+    <script type='text/javascript'>
+      var form = element('conversion-form');
+      var fieldWithId = element('file-id');
+      var fieldWithName= element('file-name');
+
+      fieldWithId.fill = function() {
+        if (window.dialogArguments) {
+          this.value = window.dialogArguments.id;
+        }
+      };
+
+      fieldWithName.fill = function() {
+        if (window.dialogArguments) {
+          this.textContent = ' ' + window.dialogArguments.name;
+        }
+      };
+
+      function conversionCancelled(e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        window.returnValue = false;
+        window.close();
+      }
+
+      function conversionSubmitted(e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        window.returnValue = {
+          id:   window.dialogArguments.id,
+          from: element('convert-form-input').value,
+          to:   element('convert-to-input').value
+        };
+        window.close();
+      }
+
+      window.onload = function() {
+        fieldWithId.fill();
+        fieldWithName.fill();
+
+        form.addEventListener('submit', conversionSubmitted, false);
+        form.addEventListener('reset', conversionCancelled, false);
+        window.addEventListener('close', conversionCancelled, false);
+      }
+    </script>
+  </body>
+</html>
