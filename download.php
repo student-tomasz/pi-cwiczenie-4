@@ -1,16 +1,16 @@
 <?php
-include('sanitize.php');
-include('connect.php');
+include_once('sanitize.php');
+include_once('connect.php');
 
 $id = sanitize($_REQUEST['id']);
-$file = mysql_fetch_array(mysql_query("SELECT id, name FROM {$config['db_table_name']} WHERE id='{$id} LIMIT 0, 1'"));
+$file = mysql_fetch_array(mysql_query("SELECT * FROM {$config['db_table_name']} WHERE id='{$id}' LIMIT 0, 1"));
 if ($file) {
   $file_path = $config['path'] . $file['id'];
 
   // example copied from http://php.net/manual/en/function.readfile.php
   if (file_exists($file_path)) {
     header('Content-Description: File Transfer');
-    header('Content-Type: application/octet-stream');
+    header('Content-Type: ' . mime_content_type($file_path));
     header('Content-Disposition: attachment; filename=' . basename($file['name']));
     header('Content-Transfer-Encoding: binary');
     header('Expires: 0');
@@ -24,5 +24,5 @@ if ($file) {
   }
 }
 
-include('disconnect.php');
+include_once('disconnect.php');
 ?>
