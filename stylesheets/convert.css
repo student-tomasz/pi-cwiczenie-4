@@ -1,0 +1,12 @@
+body {
+  margin: 10px;
+  width: 560px;
+}
+
+#conversion-fields {
+  padding: 1.5em 1em;
+}
+
+#conversion-fields p {
+  display: inline;
+}

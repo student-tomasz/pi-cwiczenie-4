@@ -19,27 +19,32 @@
     <link href='shared/stylesheets/style.css' type='text/css' rel='stylesheet' media='all' />
     <link href='shared/favicon.ico' type='image/ico' rel='shortcut icon' />
 
+    <link href='stylesheets/style.css' type='text/css' rel='stylesheet' media='all' />
     <link href='stylesheets/convert.css' type='text/css' rel='stylesheet' media='all' />
+    <link href='stylesheets/forms.css' type='text/css' rel='stylesheet' media='all' />
+    <link href='stylesheets/fancy-button.css' type='text/css' rel='stylesheet' media='all' />
   </head>
 
   <body id='project-4-convert'>
     <form id='conversion-form' action='convert.php' method='post'>
-      <input type='hidden' id='file-id' value='null' />
-      <p>Zmień kodowanie pliku<strong id='file-name'></strong> z </p>
-      <select id='convert-form-input' name='from'>
-        <option value='utf-8' selected='selected'>UTF-8</option>
-        <option value='iso-8859-2'>ISO-8859-2</option>
-        <option value='windows-1250'>WINDOWS-1250</option>
-      </select> 
-      <p> na </p>
-      <select id='convert-to-input' name='to'>
-        <option value='utf-8'>UTF-8</option>
-        <option value='iso-8859-2' selected='selected'>ISO-8859-2</option>
-        <option value='windows-1250'>WINDOWS-1250</option>
-      </select> 
-      <div id='convert-actions'>
-        <input id='convert-submit' type='submit' value='Konwertuj' />
-        <input id='convert-cancel' type='reset' value='Anuluj' />
+      <div id='conversion-fields' class='form-fields'>
+        <input type='hidden' id='file-id' value='null' />
+        <p>Zmień kodowanie pliku<strong id='file-name'></strong> z </p>
+        <select id='convert-form-input' name='from'>
+          <option value='UTF-8'>utf-8</option>
+          <option value='ISO-8859-2' selected='selected'>iso-8859-2</option>
+          <option value='WINDOWS-1250'>windows-1250</option>
+        </select> 
+        <p> na </p>
+        <select id='convert-to-input' name='to'>
+          <option value='UTF-8' selected='selected'>utf-8</option>
+          <option value='ISO-8859-2'>iso-8859-2</option>
+          <option value='WINDOWS-1250'>windows-1250</option>
+        </select> 
+      </div>
+      <div id='conversion-actions' class='form-actions'>
+        <input id='convert-submit' class='fancy-button primary' type='submit' value='Konwertuj' />
+        <input id='convert-cancel' class='fancy-button back' type='reset' value='Anuluj' />
       </div>
     </form>
 

@@ -6,7 +6,7 @@ var Converter = function() {
       id: id,
       name: element('file-' + id + '-name').textContent
     };
-    var results = window.showModalDialog('convert.html', args, "dialogheight: 100, dialogwidth: 300, resizeable: no, scroll: no");
+    var results = window.showModalDialog('convert.html', args, "dialogheight: 480, dialogwidth: 640, resizeable: no, scroll: no");
     if (results) {
       this.convert(id, results.from, results.to);
       console.log('[notice]', 'calling file conversion with args:', id, results.from, results.to);

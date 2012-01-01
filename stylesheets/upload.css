@@ -1,0 +1,14 @@
+#upload {
+  margin-top: 3em;
+}
+
+#upload-fields input[type='file'] {
+  display: block;
+  margin: 1.5em 1em;
+}
+
+#upload-actions p.hint {
+  display: inline;
+  color: #999;
+  font-style: italic;
+}

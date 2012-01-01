@@ -1,5 +1,15 @@
+html {
+  background: #fff;
+  color: #404040;
+}
+
 body {
-  font-family: 'Helvetica Neue', 'Helvetica', 'Lucida Grande', 'Lucida Sans', 'Segoe UI', 'Verdana', sans-serif;
+  background: #fff;
+  color: #404040;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Lucida Grande', 'Segoe UI', 'Arial', sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
 }
 
 pre.prettyprint {

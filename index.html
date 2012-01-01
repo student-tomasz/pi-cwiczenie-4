@@ -22,6 +22,10 @@
     <link href='shared/vendor/javascripts/prettify-latest/prettify.css' type='text/css' rel='stylesheet' />
 
     <link href='stylesheets/style.css' type='text/css' rel='stylesheet' media='all' />
+    <link href='stylesheets/forms.css' type='text/css' rel='stylesheet' media='all' />
+    <link href='stylesheets/fancy-button.css' type='text/css' rel='stylesheet' media='all' />
+    <link href='stylesheets/upload.css' type='text/css' rel='stylesheet' media='all' />
+    <link href='stylesheets/files.css' type='text/css' rel='stylesheet' media='all' />
   </head>
 
   <body id='project-4'>
@@ -35,10 +39,14 @@
     <div id='upload' class='section'>
       <h3>Prześlij plik na serwer</h3>
       <form id='upload-form' action='upload.php' enctype='multipart/form-data' method='post'>
-        <input type='hidden' id='MAX_FILE_SIZE' name='MAX_FILE_SIZE' value='50000' />  
-        <input type='file' id='upload-input' name='file' /> 
-        <input type='submit' id='upload-submit' name='submit' value='Wyślij' />
-        <p class='hint'>maksymalny rozmiar pliku to <strong>50kB</strong></p>
+        <div id='upload-fields' class='form-fields'>
+          <input type='hidden' id='MAX_FILE_SIZE' name='MAX_FILE_SIZE' value='50000' />  
+          <input type='file' id='upload-input' name='file' /> 
+        </div>
+        <div id='upload-actions' class='form-actions'>
+          <input type='submit' id='upload-submit' class='fancy-button' name='submit' value='Wyślij' />
+          <p id='upload-hint' class='hint'>maksymalny rozmiar pliku to <strong>50kB</strong></p>
+        </div>
       </form>
     </div>
 

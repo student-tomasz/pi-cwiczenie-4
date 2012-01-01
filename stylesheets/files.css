@@ -1,0 +1,56 @@
+#files {
+  margin-top: 3em;
+}
+
+#files-table {
+  border: 1px solid #ddd;
+  width: 100%;
+}
+
+#files-table thead tr th,
+#files-table tbody tr td {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 0.75em;
+}
+
+#files-table tbody tr:nth-child(odd) td {
+  background-color: #f9f9f9;
+}
+
+#files-table tbody tr:hover td {
+  background-color: #f0f0f0;
+}
+
+#files-table tbody tr td.id {
+  text-align: right;
+  width: 5%;
+}
+
+#files-table tbody tr td.type,
+#files-table tbody tr td.size {
+  font-family: monospace;
+  overflow: hidden;
+  width: 15%;
+}
+
+#files-table tbody tr td.size {
+  text-align: right;
+}
+
+#files-table tbody tr td.actions {
+  text-align: right;
+  width: 25%;
+}
+
+#files-table tbody tr td.actions > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#files-table tbody tr td.actions > ul > li.action {
+  display: inline;
+  margin: 0 0 0 0.5em;
+  padding: 0;
+}
