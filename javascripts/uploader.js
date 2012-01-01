@@ -3,13 +3,29 @@ var Uploader = function() {
   var input =  element('upload-input');
   var submit = element('upload-submit');
 
+  input.reset = function() {
+    this.value = null;
+  }
+
+  submit.disable = function(message) {
+    this.disabled = true;
+    if (message) {
+      this.value = message;
+    }
+  }
+
+  submit.enable = function(message) {
+    this.disabled = false;
+    this.value = message || 'Wyślij';
+  }
+
   var fileChanged = function(e) {
     var file = input.files[0];
     if (file.size > element('MAX_FILE_SIZE').value) {
-      submit.disabled = true;
+      submit.disable();
     }
     else {
-      submit.disabled = false;
+      submit.enable();
     }
   };
 
@@ -17,23 +33,22 @@ var Uploader = function() {
     e.stopPropagation();
     e.preventDefault();
 
-    submit.disabled = true;
-    submit.value = 'Przesyłanie...'
-
     var file = input.files[0];
+
+    submit.disable('Przesyłanie...');
 
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(e) {
       if (request.readyState === 4) {
         if (request.status === 200) {
           updater.update();
-          submit.disabled = false;
-          submit.value = 'Wyślij'
           console.log('[notice]', 'file uploaded successfully');
         }
         else {
           console.log('[error]', 'file upload failed');
         }
+        submit.enable();
+        input.reset();
       }
     };
 
