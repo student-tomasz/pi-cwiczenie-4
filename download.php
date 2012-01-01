@@ -10,7 +10,7 @@ if ($file) {
   // example copied from http://php.net/manual/en/function.readfile.php
   if (file_exists($file_path)) {
     header('Content-Description: File Transfer');
-    header('Content-Type: ' . mime_content_type($file_path));
+    header('Content-Type: ' . $file['type']);
     header('Content-Disposition: attachment; filename=' . basename($file['name']));
     header('Content-Transfer-Encoding: binary');
     header('Expires: 0');
