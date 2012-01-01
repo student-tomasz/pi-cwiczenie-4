@@ -20,7 +20,6 @@ if ($file) {
     ob_clean();
     flush();
     readfile($file_path);
-    exit;
   }
 }
 
