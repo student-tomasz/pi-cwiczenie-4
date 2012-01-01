@@ -21,7 +21,7 @@ var Uploader = function() {
 
   var fileChanged = function(e) {
     var file = input.files[0];
-    if (file.size > element('MAX_FILE_SIZE').value) {
+    if (!file || file.size > element('MAX_FILE_SIZE').value) {
       submit.disable();
     }
     else {
@@ -34,6 +34,9 @@ var Uploader = function() {
     e.preventDefault();
 
     var file = input.files[0];
+    if (!file) {
+      return false;
+    }
 
     submit.disable('Przesyłanie...');
 
@@ -48,6 +51,7 @@ var Uploader = function() {
           console.log('[error]', 'file upload failed');
         }
         submit.enable();
+        submit.disable();
         input.reset();
       }
     };
@@ -62,6 +66,7 @@ var Uploader = function() {
   };
 
   this.init = function() {
+    submit.disable();
     input.addEventListener('change', fileChanged, false);
     form.addEventListener('submit', fileSubmitted, false);
   };
