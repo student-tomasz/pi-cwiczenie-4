@@ -10,7 +10,7 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') {
     'path' => ''
   );
 
-  $sql = "INSERT INTO {$config[db_table_name]} (name, size, type) VALUES ('{$file['name']}', '{$file['size']}', '{$file['type']}')";
+  $sql = "INSERT INTO {$config['db_table_name']} (name, size, type) VALUES ('{$file['name']}', '{$file['size']}', '{$file['type']}')";
   if (!mysql_query($sql, $connection)) {
     error_log('Didn\'t write to the database: ' . mysql_error());
     die(1);
