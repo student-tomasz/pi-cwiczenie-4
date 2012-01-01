@@ -1,16 +1,10 @@
 .form-fields {
   border: 1px solid #ddd;
   background-color: #fff;
-  -webkit-border-radius: 4px 4px 0 0;
-  -moz-border-radius: 4px 4px 0 0;
-  border-radius: 4px 4px 0 0;
 }
 
 .form-actions {
   border: 1px solid #ddd;
   border-top: none;
   background-color: #f9f9f9;
-  -webkit-border-radius: 0 0 4px 4px;
-  -moz-border-radius: 0 0 4px 4px;
-  border-radius: 0 0 4px 4px;
 }
