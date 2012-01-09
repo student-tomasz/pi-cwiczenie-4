@@ -1,7 +1,7 @@
 <?php
 include_once('connect.php');
 
-$files = mysql_query("SELECT * FROM {$config['db_table_name']}");
+$files = mysql_query("SELECT * FROM {$config['db_table_name']} ORDER BY id");
 while($file = mysql_fetch_array($files)) {
   $id = $file['id'];
   $file_path = $config['path'] . $id;
