@@ -15,7 +15,7 @@ $config = array(
     'db_pass' => 'polska1',
     'db_name' => 'pi_inf',
     'db_table_name' => 'cudzilot_cw4',
-    'path' => '/home/stud/cudzilot/semestr-3/programowanie-internetowe/cwiczenie-4/uploads/'
+    'path' => '/home/stud/cudzilot/WWW/pi/cw4/uploads/'
   )
 );
 $config = $config['development'];
